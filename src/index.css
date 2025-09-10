@@ -1,6 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    /* Claymorphism Color Palette - Pastel Blues & Whites */
+    --primary: 213 94% 68%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 213 100% 85%;
+    
+    --secondary: 210 40% 95%;
+    --secondary-foreground: 213 50% 30%;
+    
+    --accent: 213 90% 85%;
+    --accent-foreground: 213 50% 25%;
+    
+    --background: 210 40% 98%;
+    --foreground: 213 50% 15%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 213 50% 15%;
+    
+    --muted: 210 40% 95%;
+    --muted-foreground: 213 20% 40%;
+    
+    --border: 210 40% 90%;
+    --input: 210 40% 95%;
+    --ring: 213 94% 68%;
+    
+    /* Success/Warning Colors */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --radius: 16px;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 213 50% 8%;
+    --foreground: 210 40% 98%;
+    --card: 213 50% 10%;
+    --card-foreground: 210 40% 98%;
+    --primary: 213 94% 68%;
+    --primary-foreground: 213 50% 8%;
+    --secondary: 213 50% 15%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 213 50% 15%;
+    --muted-foreground: 213 20% 60%;
+    --accent: 213 90% 25%;
+    --accent-foreground: 210 40% 98%;
+    --border: 213 50% 20%;
+    --input: 213 50% 15%;
+    --ring: 213 94% 68%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-['Roboto'];
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  .clay-card {
+    @apply bg-white rounded-2xl;
+    box-shadow: 8px 8px 16px hsl(210, 40%, 88%), -8px -8px 16px hsl(0, 0%, 100%);
+    background: linear-gradient(145deg, hsl(0, 0%, 100%), hsl(210, 40%, 96%));
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .clay-card:hover {
+    box-shadow: 12px 12px 24px hsl(210, 40%, 85%), -12px -12px 24px hsl(0, 0%, 100%);
+    transform: translateY(-2px);
+  }
+  
+  .clay-button {
+    @apply rounded-xl font-medium;
+    background: linear-gradient(145deg, hsl(213, 94%, 68%), hsl(213, 80%, 60%));
+    box-shadow: 6px 6px 12px hsl(213, 40%, 50%, 0.3), -6px -6px 12px hsl(0, 0%, 100%, 0.8);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .clay-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 8px 8px 16px hsl(213, 40%, 45%, 0.4), -8px -8px 16px hsl(0, 0%, 100%, 0.9);
+  }
+  
+  .clay-button:active {
+    transform: translateY(1px);
+    box-shadow: inset 4px 4px 8px hsl(210, 40%, 88%), inset -4px -4px 8px hsl(0, 0%, 100%);
+  }
+  
+  .clay-input {
+    @apply bg-input border-border rounded-xl;
+    box-shadow: inset 4px 4px 8px hsl(210, 40%, 88%), inset -4px -4px 8px hsl(0, 0%, 100%);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .clay-input:focus {
+    @apply ring-2 ring-primary;
+    box-shadow: inset 4px 4px 8px hsl(210, 40%, 88%), inset -4px -4px 8px hsl(0, 0%, 100%), 0 0 0 2px hsl(var(--primary) / 0.3);
+  }
+  
+  .progress-bar {
+    @apply relative overflow-hidden rounded-full;
+    background: linear-gradient(145deg, hsl(0, 0%, 100%), hsl(210, 40%, 96%));
+    box-shadow: inset 4px 4px 8px hsl(210, 40%, 88%), inset -4px -4px 8px hsl(0, 0%, 100%);
+  }
+  
+  .progress-fill {
+    @apply h-full rounded-full transition-all duration-1000 ease-out;
+    background: linear-gradient(135deg, hsl(213, 94%, 68%), hsl(213, 100%, 85%));
+    box-shadow: 0 2px 8px hsl(213, 94%, 68%, 0.4);
+  }
+  
+  .metric-card {
+    @apply clay-card p-6 text-center;
+  }
+  
+  .metric-value {
+    @apply text-2xl font-bold text-primary mb-1;
+  }
+  
+  .metric-label {
+    @apply text-sm text-muted-foreground font-medium;
+  }
+  
+  .page-header {
+    @apply text-3xl font-bold text-center mb-8 text-foreground;
+  }
+  
+  .section-title {
+    @apply text-xl font-semibold mb-4 text-foreground;
+  }
+  
+  .animate-bounce-gentle {
+    animation: bounceGentle 2s infinite;
+  }
+  
+  @keyframes bounceGentle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
 
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
