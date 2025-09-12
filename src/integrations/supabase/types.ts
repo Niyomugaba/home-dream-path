@@ -53,6 +53,36 @@ export type Database = {
         }
         Relationships: []
       }
+      credit_score_history: {
+        Row: {
+          created_at: string
+          date: string
+          id: string
+          notes: string | null
+          score: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          date?: string
+          id?: string
+          notes?: string | null
+          score: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          date?: string
+          id?: string
+          notes?: string | null
+          score?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       market: {
         Row: {
           created_at: string
@@ -231,6 +261,120 @@ export type Database = {
           moving_setup?: number
           percent_to_goal?: number
           total_savings?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      transactions: {
+        Row: {
+          amount: number
+          category: string
+          created_at: string
+          date: string
+          description: string | null
+          id: string
+          type: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          category: string
+          created_at?: string
+          date?: string
+          description?: string | null
+          id?: string
+          type: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          category?: string
+          created_at?: string
+          date?: string
+          description?: string | null
+          id?: string
+          type?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      us_states: {
+        Row: {
+          avg_home_price: number
+          avg_insurance_rate: number
+          avg_interest_rate: number
+          avg_property_tax_rate: number
+          created_at: string
+          id: string
+          price_growth_rate: number
+          state_code: string
+          state_name: string
+        }
+        Insert: {
+          avg_home_price?: number
+          avg_insurance_rate?: number
+          avg_interest_rate?: number
+          avg_property_tax_rate?: number
+          created_at?: string
+          id?: string
+          price_growth_rate?: number
+          state_code: string
+          state_name: string
+        }
+        Update: {
+          avg_home_price?: number
+          avg_insurance_rate?: number
+          avg_interest_rate?: number
+          avg_property_tax_rate?: number
+          created_at?: string
+          id?: string
+          price_growth_rate?: number
+          state_code?: string
+          state_name?: string
+        }
+        Relationships: []
+      }
+      user_settings: {
+        Row: {
+          created_at: string
+          credit_score_goal: number
+          default_debt: Json
+          default_expenses: Json
+          default_income: number
+          id: string
+          mortgage_defaults: Json
+          savings_goals: Json
+          selected_state: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          credit_score_goal?: number
+          default_debt?: Json
+          default_expenses?: Json
+          default_income?: number
+          id?: string
+          mortgage_defaults?: Json
+          savings_goals?: Json
+          selected_state?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          credit_score_goal?: number
+          default_debt?: Json
+          default_expenses?: Json
+          default_income?: number
+          id?: string
+          mortgage_defaults?: Json
+          savings_goals?: Json
+          selected_state?: string
           updated_at?: string
           user_id?: string
         }
