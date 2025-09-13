@@ -11,6 +11,7 @@ import BudgetTracker from "@/pages/BudgetTracker";
 import SavingsTracker from "@/pages/SavingsTracker";
 import MortgageCalculator from "@/pages/MortgageCalculator";
 import MilestonesMarket from "@/pages/MilestonesMarket";
+import Settings from "@/pages/Settings";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -56,14 +57,16 @@ const App = () => (
                 </ProtectedRoute>
               } 
             />
-            <Route 
-              path="/milestones" 
-              element={
-                <ProtectedRoute>
-                  <MilestonesMarket />
-                </ProtectedRoute>
-              } 
-            />
+            <Route path="/milestones" element={
+              <ProtectedRoute>
+                <MilestonesMarket />
+              </ProtectedRoute>
+            } />
+            <Route path="/settings" element={
+              <ProtectedRoute>
+                <Settings />
+              </ProtectedRoute>
+            } />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </TooltipProvider>
