@@ -58,10 +58,10 @@ const Dashboard = () => {
           savingsData?.maintenance || 0,
         ],
         backgroundColor: [
-          'hsl(213, 94%, 68%)',  // Primary blue
-          'hsl(213, 100%, 85%)', // Light blue  
-          'hsl(210, 40%, 95%)',  // Very light blue
-          'hsl(213, 50%, 30%)',  // Dark blue
+          'hsl(213, 94%, 68%)',   // Blue
+          'hsl(142, 76%, 60%)',   // Green
+          'hsl(38, 92%, 65%)',    // Orange
+          'hsl(173, 58%, 39%)',   // Teal
         ],
         borderWidth: 0,
       },
@@ -127,52 +127,52 @@ const Dashboard = () => {
 
         {/* Metrics Cards */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          <div className="metric-card">
-            <PiggyBank className="w-8 h-8 text-primary mx-auto mb-2" />
-            <div className="metric-value">
+          <div className="gradient-card-teal clay-card text-white p-4 text-center">
+            <PiggyBank className="w-6 h-6 mx-auto mb-2" />
+            <div className="text-xl font-bold mb-1">
               ${savingsData?.total_savings?.toLocaleString() || 0}
             </div>
-            <div className="metric-label">Total Savings</div>
+            <div className="text-xs opacity-90">Total Savings</div>
           </div>
           
-          <div className="metric-card">
-            <Calendar className="w-8 h-8 text-primary mx-auto mb-2" />
-            <div className="metric-value">
+          <div className="gradient-card-orange clay-card text-white p-4 text-center">
+            <Calendar className="w-6 h-6 mx-auto mb-2" />
+            <div className="text-xl font-bold mb-1">
               {savingsData?.months_left || 24}
             </div>
-            <div className="metric-label">Months Left</div>
+            <div className="text-xs opacity-90">Months Left</div>
           </div>
           
-          <div className="metric-card">
-            <Home className="w-8 h-8 text-primary mx-auto mb-2" />
-            <div className="metric-value">
+          <div className="gradient-card-violet clay-card text-white p-4 text-center">
+            <Home className="w-6 h-6 mx-auto mb-2" />
+            <div className="text-xl font-bold mb-1">
               ${mortgageData?.affordable_price?.toLocaleString() || 190000}
             </div>
-            <div className="metric-label">Affordable Price</div>
+            <div className="text-xs opacity-90">Affordable Price</div>
           </div>
           
-          <div className="metric-card">
-            <DollarSign className="w-8 h-8 text-primary mx-auto mb-2" />
-            <div className="metric-value">
+          <div className="gradient-card-blue clay-card text-white p-4 text-center">
+            <DollarSign className="w-6 h-6 mx-auto mb-2" />
+            <div className="text-xl font-bold mb-1">
               ${mortgageData?.monthly_payment?.toLocaleString() || 1628}
             </div>
-            <div className="metric-label">Monthly Payment</div>
+            <div className="text-xs opacity-90">Monthly Payment</div>
           </div>
           
-          <div className="metric-card">
-            <TrendingUp className="w-8 h-8 text-primary mx-auto mb-2" />
-            <div className="metric-value">
+          <div className="gradient-card-green clay-card text-white p-4 text-center">
+            <TrendingUp className="w-6 h-6 mx-auto mb-2" />
+            <div className="text-xl font-bold mb-1">
               {mortgageData?.dti ? (mortgageData.dti * 100).toFixed(1) : 30.8}%
             </div>
-            <div className="metric-label">DTI Ratio</div>
+            <div className="text-xs opacity-90">DTI Ratio</div>
           </div>
           
-          <div className="metric-card">
-            <CreditCard className="w-8 h-8 text-primary mx-auto mb-2" />
-            <div className="metric-value">
+          <div className="gradient-card-blue clay-card text-white p-4 text-center">
+            <CreditCard className="w-6 h-6 mx-auto mb-2" />
+            <div className="text-xl font-bold mb-1">
               {userData?.credit_score || 720}
             </div>
-            <div className="metric-label">Credit Score</div>
+            <div className="text-xs opacity-90">Credit Score</div>
           </div>
         </div>
 

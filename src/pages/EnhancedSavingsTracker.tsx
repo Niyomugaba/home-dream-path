@@ -243,7 +243,7 @@ const EnhancedSavingsTracker = () => {
   };
 
   const totalSavings = Object.values(currentBalances).reduce((sum: number, val: number) => sum + val, 0);
-  const progressPercentage = (totalSavings / totalGoal) * 100;
+  const progressPercentage = (totalSavings / (totalGoal as number)) * 100;
 
   // Chart data - show savings growth over time
   const chartData = {
@@ -259,8 +259,8 @@ const EnhancedSavingsTracker = () => {
       },
       {
         label: 'Goal',
-        data: savingsHistory.slice().reverse().map(() => totalGoal),
-        borderColor: 'hsl(142, 76%, 36%)',
+        data: savingsHistory.slice().reverse().map(() => totalGoal as number),
+        borderColor: 'hsl(142, 76%, 45%)',
         backgroundColor: 'transparent',
         borderDash: [5, 5],
       },
@@ -312,7 +312,7 @@ const EnhancedSavingsTracker = () => {
 
         {/* Current Savings Overview */}
         <div className="grid md:grid-cols-4 gap-4">
-          {Object.entries(currentBalances).map(([key, value]) => {
+          {Object.entries(currentBalances).map(([key, value], index) => {
             const goal = savingsGoals[key as keyof typeof savingsGoals];
             const percentage = (value / goal) * 100;
             const labels = {
@@ -321,18 +321,21 @@ const EnhancedSavingsTracker = () => {
               moving_setup: 'Moving/Setup',
               maintenance: 'Maintenance'
             };
+
+            const cardColors = ['gradient-card-blue', 'gradient-card-green', 'gradient-card-orange', 'gradient-card-teal'];
+            const iconColors = ['text-white', 'text-white', 'text-white', 'text-white'];
             
             return (
-              <div key={key} className="metric-card">
-                <PiggyBank className="w-6 h-6 text-primary mx-auto mb-2" />
-                <div className="metric-label mb-1">{labels[key as keyof typeof labels]}</div>
-                <div className="metric-value">${value.toLocaleString()}</div>
-                <div className="text-xs text-muted-foreground">
+              <div key={key} className={`clay-card ${cardColors[index]} text-white p-6 text-center animate-fade-in`}>
+                <PiggyBank className={`w-8 h-8 ${iconColors[index]} mx-auto mb-3`} />
+                <div className="text-sm font-medium mb-2 opacity-90">{labels[key as keyof typeof labels]}</div>
+                <div className="text-2xl font-bold mb-2">${value.toLocaleString()}</div>
+                <div className="text-xs opacity-75 mb-3">
                   {percentage.toFixed(1)}% of ${goal.toLocaleString()}
                 </div>
-                <div className="w-full bg-secondary rounded-full h-2 mt-2">
+                <div className="w-full bg-white/20 rounded-full h-3">
                   <div 
-                    className="progress-fill h-2" 
+                    className="bg-white rounded-full h-3 transition-all duration-1000 ease-out" 
                     style={{ width: `${Math.min(percentage, 100)}%` }}
                   />
                 </div>

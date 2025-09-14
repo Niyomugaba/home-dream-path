@@ -7,10 +7,10 @@ import { AuthProvider } from "@/hooks/useAuth";
 import ProtectedRoute from "@/components/ui/protected-route";
 import AuthPage from "@/components/auth/AuthPage";
 import Dashboard from "@/pages/Dashboard";
-import BudgetTracker from "@/pages/BudgetTracker";
-import SavingsTracker from "@/pages/SavingsTracker";
+import EnhancedBudgetTracker from "@/pages/EnhancedBudgetTracker";
+import EnhancedSavingsTracker from "@/pages/EnhancedSavingsTracker";
 import MortgageCalculator from "@/pages/MortgageCalculator";
-import MilestonesMarket from "@/pages/MilestonesMarket";
+import EnhancedMilestonesMarket from "@/pages/EnhancedMilestonesMarket";
 import Settings from "@/pages/Settings";
 import NotFound from "./pages/NotFound";
 
@@ -37,7 +37,7 @@ const App = () => (
               path="/budget" 
               element={
                 <ProtectedRoute>
-                  <BudgetTracker />
+                  <EnhancedBudgetTracker />
                 </ProtectedRoute>
               } 
             />
@@ -45,7 +45,7 @@ const App = () => (
               path="/savings" 
               element={
                 <ProtectedRoute>
-                  <SavingsTracker />
+                  <EnhancedSavingsTracker />
                 </ProtectedRoute>
               } 
             />
@@ -59,7 +59,7 @@ const App = () => (
             />
             <Route path="/milestones" element={
               <ProtectedRoute>
-                <MilestonesMarket />
+                <EnhancedMilestonesMarket />
               </ProtectedRoute>
             } />
             <Route path="/settings" element={
