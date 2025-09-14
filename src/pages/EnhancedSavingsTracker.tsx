@@ -86,7 +86,7 @@ const EnhancedSavingsTracker = () => {
     maintenance: 2000
   };
 
-  const totalGoal = Object.values(savingsGoals).reduce((sum: number, val: number) => sum + val, 0);
+  const totalGoal = Object.values(savingsGoals as Record<string, number>).reduce((sum: number, val: number) => sum + val, 0);
 
   useEffect(() => {
     fetchTransactions();
@@ -145,7 +145,7 @@ const EnhancedSavingsTracker = () => {
     try {
       const { error } = await supabase
         .from('savings')
-        .insert([{
+        .insert({
           user_id: user.id,
           date: new Date().toISOString().split('T')[0],
           down_payment: currentBalances.down_payment,
@@ -153,10 +153,10 @@ const EnhancedSavingsTracker = () => {
           moving_setup: currentBalances.moving_setup,
           maintenance: currentBalances.maintenance,
           total_savings: totalSavings,
-          goal: totalGoal,
+          goal: totalGoal as number,
           percent_to_goal: percentToGoal,
           months_left: 24,
-        }]);
+        });
 
       if (error) throw error;
 
