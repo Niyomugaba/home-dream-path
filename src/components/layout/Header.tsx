@@ -1,8 +1,7 @@
 import { useAuth } from '@/hooks/useAuth';
 import { Button } from '@/components/ui/button';
-import { LogOut, Settings, User } from 'lucide-react';
+import { LogOut, Settings, PiggyBank } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import logo from '@/assets/logo.png';
 
 const Header = () => {
   const { user, signOut } = useAuth();
@@ -11,12 +10,12 @@ const Header = () => {
     <header className="clay-card mb-6 p-4">
       <div className="flex items-center justify-between">
         <Link to="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
-          <div className="w-10 h-10 rounded-lg flex items-center justify-center overflow-hidden">
-            <img src={logo} alt="HomePath Logo" className="w-full h-full object-contain" />
+          <div className="gradient-card-blue p-2 rounded-xl shadow-lg">
+            <PiggyBank className="h-8 w-8 text-white" />
           </div>
           <div>
-            <h1 className="text-xl font-bold text-primary">HomePath</h1>
-            <p className="text-sm text-muted-foreground">Your Journey to Homeownership</p>
+            <h1 className="text-2xl font-bold text-foreground">FinanceTracker</h1>
+            <p className="text-sm text-muted-foreground">Your Financial Journey</p>
           </div>
         </Link>
         

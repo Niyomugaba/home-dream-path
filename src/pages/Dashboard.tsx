@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useUserData } from '@/hooks/useUserData';
 import Header from '@/components/layout/Header';
+import AlertBanner from '@/components/ui/alert-banner';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { 
@@ -97,6 +98,38 @@ const Dashboard = () => {
       <Header />
       
       <div className="max-w-7xl mx-auto space-y-6">
+        {/* Alert System */}
+        <div className="space-y-2">
+          {progressPercentage >= 75 && (
+            <AlertBanner
+              type="success"
+              title="Great Progress! 🎉"
+              message="You're 75% closer to your home ownership goal. Keep up the excellent work!"
+              actionLabel="View Details"
+              onAction={() => window.location.href = '/savings'}
+            />
+          )}
+          
+          {progressPercentage < 25 && (
+            <AlertBanner
+              type="warning"
+              title="Let's Boost Your Savings 💪"
+              message="You're just getting started. Consider increasing your monthly contributions to reach your goal faster."
+              actionLabel="Add Savings"
+              onAction={() => window.location.href = '/savings'}
+            />
+          )}
+          
+          {milestones.filter(m => new Date(m.date) <= new Date() && m.status === 'Pending').length > 0 && (
+            <AlertBanner
+              type="milestone"
+              title="Milestone Due! 🎯"
+              message={`You have ${milestones.filter(m => new Date(m.date) <= new Date() && m.status === 'Pending').length} milestone(s) that need attention.`}
+              actionLabel="Check Milestones"
+              onAction={() => window.location.href = '/milestones'}
+            />
+          )}
+        </div>
         {/* Progress Section */}
         <div className="clay-card p-6 animate-fade-in">
           <div className="text-center mb-6">
@@ -120,7 +153,7 @@ const Dashboard = () => {
               {progressPercentage.toFixed(1)}%
             </span>
             <p className="text-sm text-muted-foreground mt-1">
-              {savingsData?.months_left || 24} months remaining
+              {savingsData?.months_left || 24} months to reach your home ownership goal of ${savingsData?.goal?.toLocaleString() || 47300}
             </p>
           </div>
         </div>
